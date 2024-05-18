@@ -1,0 +1,33 @@
+<ui:composition template="masterTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="title">Home</ui:define>
+
+    <ui:define name="content">
+
+        <h2 class="text-center">
+            Willkommen auf unserer CO<sup>2</sup>-Emissionsdaten Website
+        </h2>
+        <br></br>
+        <br></br>
+        <div style="text-align: center;">
+            <h:panelGroup rendered="#{not empty loginController.lastCountryCO2ByYear}">
+                <h:outputText value="Willkommen zurück, #{loginController.username}!"/>
+                <br/>
+                <h:outputText value="Hier sind die letzten CO2-Daten für dein Land:"/>
+                <br/>
+                <h:outputText
+                        value="Die CO2-Emissionen in #{loginController.country} betragen: #{loginController.lastCountryCO2ByYear} für das Jahr: #{loginController.lastCountryCO2Year}"></h:outputText>
+            </h:panelGroup>
+        </div>
+        <div style="text-align: center;">
+            <p>Diese Website bietet Ihnen eine umfassende Übersicht über die CO<sup>2</sup>-Emissionen in verschiedenen Ländern.</p>
+            <p>Verfolgen Sie die Entwicklung der CO<sup>2</sup>-Emissionen im Laufe der Zeit und erfahren Sie mehr über die Auswirkungen auf die Umwelt.</p>
+            <p>Registrieren Sie sich noch heute, um Zugang zu exklusiven Funktionen und personalisierten Daten zu erhalten.</p>
+        </div>
+    </ui:define>
+</ui:composition>

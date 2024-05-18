@@ -1,0 +1,92 @@
+<ui:composition template="masterTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:define name="title">CO2 Daten</ui:define>
+
+    <ui:define name="content">
+
+        <p class="text-center">
+            <h:outputText value="CO2 Data"></h:outputText>
+        </p>
+
+        <div id="FrmInputData"> <!--tmp table form-->
+            <h:panelGroup rendered="#{not empty loginController.username}">
+                <!--<a class="nav-link" href="logout.xhtml">Logout</a>-->
+                <h3>CO2 - Daten hinzufügen</h3>
+                <h:form id="co2-form">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <h:outputLabel for="country">Country</h:outputLabel>
+                                <h:inputText id="country" value="#{saveDataController.country}" required="true"
+                                             requiredMessage="Country name is required"/>
+                                <br/>
+                            </td>
+                            <td>
+                                <h:outputLabel for="year">Year</h:outputLabel>
+                                <h:inputText id="year" value="#{saveDataController.year}" required="true"
+                                             requiredMessage="Year is required"/>
+                                <br/>
+                            </td>
+                            <td>
+                                <h:outputLabel for="co2">CO2</h:outputLabel>
+                                <h:inputText id="co2" value="#{saveDataController.CO2}" required="true"
+                                             requiredMessage="CO2 is required"/>
+                                <br/>
+                            </td>
+                            <td>
+                                <h:commandButton id="submit-button" value="Submit"
+                                                 action="#{saveDataController.processForm}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </h:form>
+            </h:panelGroup>
+        </div>
+
+        <div id="CO2_data_tmp_div">
+            <h:panelGroup rendered="#{not empty loginController.username}">
+                <h3>Änderungen bestätigen/ablehnen</h3>
+                <h:form id="co2-tmp-form">
+                <h:dataTable styleClass="table table-striped" value="#{co2data_table_tmp.co2DataTmpList}"
+                             var="co2dtmpt">
+                    <h:column>
+                        <f:facet name="header">Country</f:facet>
+                        <h:inputText value="#{co2dtmpt.country}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Year</f:facet>
+                        <h:inputText value="#{co2dtmpt.year}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">CO2</f:facet>
+                        <h:inputText value="#{co2dtmpt.co2}"/>
+                    </h:column>
+                </h:dataTable>
+                    <h:commandButton value="Save" action="#{saveDataController.save()}" />
+                </h:form>
+            </h:panelGroup>
+        </div>
+
+        <br></br>
+        <h3>Aktuelle Daten</h3>
+        <!--<table class="table table-striped">-->
+        <h:dataTable styleClass="table table-striped" value="#{co2data_table.co2DataList}" var="co2dt">
+            <h:column>
+                <f:facet name="header">Country</f:facet>
+                <h:outputText value="#{co2dt.country}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Year</f:facet>
+                <h:outputText value="#{co2dt.year}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">CO2</f:facet>
+                <h:outputText value="#{co2dt.co2}"/>
+            </h:column>
+        </h:dataTable>`
+    </ui:define>
+</ui:composition>

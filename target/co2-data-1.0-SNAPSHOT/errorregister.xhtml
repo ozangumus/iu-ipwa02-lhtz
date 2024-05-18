@@ -1,0 +1,15 @@
+<html lang="de" xmlns:h="http://java.sun.com/jsf/html">
+<head>
+    <title>Registrierungsfehler</title>
+</head>
+<body>
+
+<h:panelGroup rendered="#{not empty registerController.registered}">
+    <h2>Benutzer konnte nicht registriert werden.</h2>
+
+    <p>Bitte geben Sie einen gültigen Benutzernamen, ein gültiges Passwort oder eine gültige E-Mail-Adresse ein.</p>
+    <p><a href="register.xhtml">Zurück zur Registrierungsseite</a></p>
+</h:panelGroup>
+
+</body>
+</html>

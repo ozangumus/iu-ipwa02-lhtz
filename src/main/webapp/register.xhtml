@@ -1,0 +1,63 @@
+<ui:composition template="masterTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+   <ui:define name="title">Register</ui:define>
+
+   <ui:define name="content">
+
+
+      <h2 class="text-center">
+         Registrieren
+      </h2>
+      <div id="FrmLogin">
+         <h:form>
+            <table>
+               <tr>
+                  <td>
+                     <h:outputText value="Username"/>
+                  </td>
+                  <td>
+                     <h:inputText id="username" value="#{registerController.username}"></h:inputText>
+                     <h:message for="username"></h:message>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <h:outputText value="Password"/>
+                  </td>
+                  <td>
+                     <h:inputSecret id="password" value="#{registerController.password}"></h:inputSecret>
+                     <h:message for="password"></h:message>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <h:outputText value="Email"/>
+                  </td>
+                  <td>
+                     <h:inputText id="email" value="#{registerController.email}"></h:inputText>
+                     <h:message for="email"></h:message>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <h:outputText value="Country"/>
+                  </td>
+                  <td>
+                     <h:inputText id="country" value="#{registerController.country}"></h:inputText>
+                     <h:message for="country"></h:message>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <h:commandButton action="#{registerController.register()}" value="Register"></h:commandButton>
+                  </td>
+               </tr>
+            </table>
+         </h:form>
+      </div>
+   </ui:define>
+</ui:composition>
